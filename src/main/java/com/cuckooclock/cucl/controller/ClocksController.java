@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/clock")
+@RequestMapping("/clocks")
 public class ClocksController {
 
     //private ClocksRepository repository;
@@ -26,7 +26,7 @@ public class ClocksController {
 
 
 
-    @GetMapping("/clocks")
+    @GetMapping
     /*public List<ClockDto> allClocks(){
         *//*return Collections.singletonList(new ClockDto(){{
             setId(1);
@@ -43,31 +43,33 @@ public class ClocksController {
         return clockService.getAllClocks();
     }
 
-    @GetMapping("/clocks/{id}")
+    @GetMapping("/{id}")
     public Clock getClock(@PathVariable Integer id){
         return clockService.getClock(id);
     }
 
-    @PostMapping("/clocks")
+    @PostMapping
     public void addClock(@RequestBody Clock clock){
         clockService.addClock(clock);
     }
 
-    @PutMapping("/clocks/{id}")
+    @PutMapping("/{id}")
     public void updateClock(@RequestBody Clock clock, @PathVariable String id){
         clockService.updateClock(id,clock);
     }
 
-    @DeleteMapping("/clocks/{id}")
+    @DeleteMapping("/{id}")
     public void deleteClock(@PathVariable Integer id){
         clockService.deleteClock(id);
     }
 
-    //@GetMapping("/add")
-    /*@RequestMapping("/add")
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @GetMapping("/add")
+    //@RequestMapping("/add")
     public String add(@RequestParam String name, @RequestParam String description){
         Clock clock = new Clock(name, description);
-        repository.save(clock);
+        //repository.save(clock);
+        clockService.addClock(clock);
         return "Saved";
-    }*/
+    }
 }
