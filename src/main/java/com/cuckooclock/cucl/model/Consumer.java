@@ -1,11 +1,10 @@
 package com.cuckooclock.cucl.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 @Entity
-public class Clock {
+public class Consumer {
     @Id
     @GeneratedValue
     private int id;
@@ -14,22 +13,22 @@ public class Clock {
 
     private String description;
 
-    @OneToMany(mappedBy="clock", cascade= CascadeType.ALL)
-    private List<Consumer> consumers = new ArrayList<Consumer>();
+    private Date birthdate;
 
-    public  Clock(){
+    @ManyToOne
+    @JoinColumn(name="clockid")
+    private Clock clock;
+
+    public  Consumer(){
 
     }
 
-    public Clock(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public Clock(int id, String name, String description) {
+    public Consumer(int id, String name, String description, Date birthdate, Clock clock) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.birthdate = birthdate;
+        this.clock = clock;
     }
 
     public int getId() {
@@ -56,5 +55,19 @@ public class Clock {
         this.description = description;
     }
 
+    public Date getBirthdate() {
+        return birthdate;
+    }
 
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public Clock getClock() {
+        return clock;
+    }
+
+    public void setClock(Clock clock) {
+        this.clock = clock;
+    }
 }

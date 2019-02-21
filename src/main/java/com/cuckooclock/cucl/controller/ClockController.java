@@ -2,7 +2,7 @@ package com.cuckooclock.cucl.controller;
 
 
 import com.cuckooclock.cucl.model.Clock;
-import com.cuckooclock.cucl.repository.ClocksRepository;
+import com.cuckooclock.cucl.repository.ClockRepository;
 import com.cuckooclock.cucl.service.ClockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/clocks")
-public class ClocksController {
+public class ClockController {
 
-    //private ClocksRepository repository;
+    //private ClockRepository repository;
     @Autowired
     private ClockService clockService;
 
-    //public  ClocksController(ClocksRepository repository){
+    //public  ClockController(ClockRepository repository){
     //    this.repository = repository;
         /*Clock clock = new Clock();
         clock.setName("AnyClock");
@@ -27,13 +27,13 @@ public class ClocksController {
 
 
     @GetMapping
-    /*public List<ClockDto> allClocks(){
-        *//*return Collections.singletonList(new ClockDto(){{
+    /*public List<ClockДто> allClocks(){
+        *//*return Collections.singletonList(new ClockДто(){{
             setId(1);
             setName("Clock1");
             setDescription("Description");
         }});*//*
-        return repository.findAll().stream().map(user -> new ClockDto() {{
+        return repository.findAll().stream().map(user -> new ClockДто() {{
             setId(user.getId());
             setName("***" + user.getName() + "***");
         }}).collect(Collectors.toList());
